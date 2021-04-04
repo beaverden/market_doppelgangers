@@ -1,18 +1,10 @@
 import random
-from datetime import datetime, timedelta
-import mplfinance as mpf
-import matplotlib.animation
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import scipy.stats
-import scipy.spatial
-import heapq
 import streamlit as st
-import inspect
 import doppelgangers_util
 import bruteforce_stats
-from matplotlib.patches import Rectangle
 
 
 @st.cache
