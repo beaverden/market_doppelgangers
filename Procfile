@@ -1,0 +1,1 @@
+web: streamlit run market_doppel_streamlit.py
