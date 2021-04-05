@@ -3,7 +3,8 @@ import numpy as np
 import scipy.stats
 import scipy.spatial
 import heapq
-import dtw
+from dtw import accelerated_dtw
+
 
 # Loads the data from CSV
 # If tick_size is day or week, the data is upsampled
@@ -77,10 +78,15 @@ def predict_next(returns: pd.Series, period: pd.Series, distance, avoid, nr_sele
     return smallest[0], np.mean(np.array(next_values))
 
 
+def dtw_wrapper(x, y):
+    d, _, _, _ = accelerated_dtw(x, y, dist='euclidean')
+    return d
+
+
 distances_named = {
     'cityblock': lambda x, y: scipy.spatial.distance.cityblock(x, y),
     'euclidean': lambda x, y: np.linalg.norm(x - y),
     'minkowski p=3': lambda x, y: scipy.spatial.distance.minkowski(x, y, p=3),
     'minkowski p=4': lambda x, y: scipy.spatial.distance.minkowski(x, y, p=4),
-    'dtw': lambda x, y: dtw.dtw(x, y, distance_only=True).distance
+    'dtw': lambda x, y: dtw_wrapper(x, y)
 }

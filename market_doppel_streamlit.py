@@ -5,7 +5,6 @@ import numpy as np
 import streamlit as st
 import doppelgangers_util
 import bruteforce_stats
-import dtw
 
 @st.cache
 def get_data(filename, tick_size) -> pd.DataFrame:

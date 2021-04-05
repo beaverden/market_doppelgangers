@@ -1,8 +1,7 @@
+matplotlib==3.1.1
+numpy==1.16.1
+pandas==0.25.3
 ib_insync==0.9.65
 scipy==1.1.0
-dtw-python==1.1.7
-numpy==1.16.1
 streamlit==0.78.0
-pandas==0.25.3
-matplotlib==3.1.1
 dtw==1.4.0
