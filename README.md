@@ -10,8 +10,10 @@ go back in time and try to find the closest periods to it, in hope that they can
 The closest periods are found using a pairwise distance function between the elements. 
 
 As a weaker version, 
-check if the predicted value at least has the same size as the real value.
+check if the predicted value at least has the same sign as the real value.
 
+### Data
+Last 3 years of hourly SPY prices
 
 ### Variables
 A number of variables can be changed when experimenting
