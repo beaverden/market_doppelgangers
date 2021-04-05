@@ -82,5 +82,5 @@ distances_named = {
     'euclidean': lambda x, y: np.linalg.norm(x - y),
     'minkowski p=3': lambda x, y: scipy.spatial.distance.minkowski(x, y, p=3),
     'minkowski p=4': lambda x, y: scipy.spatial.distance.minkowski(x, y, p=4),
-    'dtw': lambda x, y: dtw.dtw(x, y).distance
+    'dtw': lambda x, y: dtw.dtw(x, y, distance_only=True).distance
 }
