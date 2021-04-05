@@ -3,7 +3,7 @@ import numpy as np
 import scipy.stats
 import scipy.spatial
 import heapq
-
+import dtw
 
 # Loads the data from CSV
 # If tick_size is day or week, the data is upsampled
@@ -56,6 +56,7 @@ def predict_next(returns: pd.Series, period: pd.Series, distance, avoid, nr_sele
 
         possible_doppel = returns.iloc[pos:pos + period_len]
         dist = distance(possible_doppel.values, period.values)
+
         if min_distance is None or dist < min_distance:
             doppels.append((dist, pos))
 
@@ -80,5 +81,6 @@ distances_named = {
     'cityblock': lambda x, y: scipy.spatial.distance.cityblock(x, y),
     'euclidean': lambda x, y: np.linalg.norm(x - y),
     'minkowski p=3': lambda x, y: scipy.spatial.distance.minkowski(x, y, p=3),
-    'minkowski p=4': lambda x, y: scipy.spatial.distance.minkowski(x, y, p=4)
+    'minkowski p=4': lambda x, y: scipy.spatial.distance.minkowski(x, y, p=4),
+    'dtw': lambda x, y: dtw.dtw(x, y, distance_only=True).distance
 }

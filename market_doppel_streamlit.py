@@ -5,7 +5,7 @@ import numpy as np
 import streamlit as st
 import doppelgangers_util
 import bruteforce_stats
-
+import dtw
 
 @st.cache
 def get_data(filename, tick_size) -> pd.DataFrame:
@@ -17,14 +17,13 @@ def description():
         st.markdown(f.read())
 
 
-
 def main():
     st.set_page_config(layout='wide')
     st.sidebar.title('What to show')
     app_mode = st.sidebar.selectbox('Choose app mode', options=[
         'Description',
         'Statistics',
-        'Interactive testing'
+        'Interactive testing',
     ])
     if app_mode == 'Statistics':
         bruteforce_stats.bruteforce_stats()
